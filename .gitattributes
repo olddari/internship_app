@@ -1,0 +1,11 @@
+'.gitignore' -text
+'README.md' -text
+'package-lock.json' -text
+'package.json' -text
+'public/index.html' -text
+'public/manifest.json' -text
+'public/robots.txt' -text
+'src/App.css' -text
+'src/App.js' -text
+'src/index.css' -text
+'src/index.js' -text
