@@ -1,4 +1,4 @@
-# icredible_internship_app Admin Dashboard
+# _app Admin Dashboard
 # Admin Dashboard Using React 
 design --https://ant.design/
 
