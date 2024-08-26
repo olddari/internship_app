@@ -11,7 +11,7 @@ const Login = () => {
         <div class="shape"></div>
         <div class="shape"></div>
       </div>
-      <form>
+      <form className='log-form'>
         <h3>Login Here</h3>
 
         <label for="username">Username</label>

@@ -14,7 +14,7 @@ import Addblog from './pages/Addblog';
 import Addcat from './pages/Addcat';
 import Addbrand from './pages/Addbrand';
 import Addproduct from './pages/Addproduct';
-
+import EditCat from './pages/EditCat';
 
 function App() {
   return <Router>
@@ -32,6 +32,7 @@ function App() {
         <Route path='brand' element={<Addbrand/>} />
         <Route path='product-list' element={<Productlist/>} />
         <Route path='product' element={<Addproduct/>} />
+        <Route path='editCat/:categoryID' element={<EditCat />} />
       </Route>
     </Routes>
   </Router>
