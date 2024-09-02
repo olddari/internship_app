@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
-  const [username, setUsername] = useState(''); // Username will now represent FirstName
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
@@ -10,28 +10,27 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      // Fetch customer data by username
       const response = await fetch(`https://localhost:44309/api/Customer/username/${username}`);
 
       if (response.ok) {
         const customer = await response.json();
+        console.log('Fetched Customer:', customer);
 
-        // Check if the fetched customer password matches the entered password
         if (customer.password === password) {
-          navigate('/admin'); // Redirect to the admin page on successful login
+          localStorage.setItem('loggedInUser', JSON.stringify(customer));
+          console.log('Login successful, navigating to admin');
+
+          navigate('/admin'); 
         } else {
           console.error('Invalid credentials');
-          // Optionally, show an error message to the user
           alert('Invalid username or password');
         }
       } else {
         console.error('Failed to fetch customer data');
-        // Optionally, show an error message to the user
         alert('Unable to fetch customer data');
       }
     } catch (error) {
       console.error('Error:', error);
-      // Optionally, show an error message to the user
       alert('An error occurred during login');
     }
   };

@@ -3,11 +3,13 @@ import { Table, message } from 'antd';
 import { FaRegEdit, FaSearch } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; 
 
-const Productlist = () => {
+const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchProducts();
@@ -47,50 +49,24 @@ const Productlist = () => {
     };
 
     const columns = [
-        {
-            title: 'Product ID',
-            dataIndex: 'productID',
-        },
-        {
-            title: 'Category ID',
-            dataIndex: 'categoryID',
-        },
-        {
-            title: 'Product Name',
-            dataIndex: 'productName',
-        },
-        {
-            title: 'Brand',
-            dataIndex: 'brand',
-        },
-        {
-            title: 'Model',
-            dataIndex: 'model',
-        },
-        {
-            title: 'Price',
-            dataIndex: 'price',
-            render: (price) => `$${price.toFixed(2)}`,
-        },
-        {
-            title: 'Stock Quantity',
-            dataIndex: 'stockQuantity',
-        },
-        {
-            title: 'Description',
-            dataIndex: 'description',
-        },
-        {
-            title: 'Image URL',
-            dataIndex: 'imageURL',
-            render: (url) => <a href={url} target="_blank" rel="noopener noreferrer">View Image</a>,
-        },
+        { title: 'Product ID', dataIndex: 'productID' },
+        { title: 'Category ID', dataIndex: 'categoryID' },
+        { title: 'Product Name', dataIndex: 'productName' },
+        { title: 'Brand', dataIndex: 'brand' },
+        { title: 'Model', dataIndex: 'model' },
+        { title: 'Price', dataIndex: 'price', render: (price) => `$${price.toFixed(2)}` },
+        { title: 'Stock Quantity', dataIndex: 'stockQuantity' },
+        { title: 'Description', dataIndex: 'description' },
+        { title: 'Image URL', dataIndex: 'imageURL', render: (url) => <a href={url} target="_blank" rel="noopener noreferrer">View Image</a> },
         {
             title: 'Actions',
             dataIndex: 'actions',
             render: (_, record) => (
                 <div>
-                    <FaRegEdit style={{ marginRight: 12, cursor: 'pointer' }} />
+                    <FaRegEdit 
+                        style={{ color: 'green', marginRight: 12, cursor: 'pointer' }} 
+                        onClick={() => navigate(`/admin/edit-product/${record.productID}`)} 
+                    />
                     <RiDeleteBin6Line 
                         style={{ color: 'red', cursor: 'pointer' }} 
                         onClick={() => handleDelete(record.productID)} 
@@ -127,16 +103,14 @@ const Productlist = () => {
                     />
                 </div>
             </div>
-            <div>
-                <Table 
-                    columns={columns} 
-                    dataSource={products} 
-                    loading={loading} 
-                    rowKey="productID" 
-                />
-            </div>
+            <Table 
+                columns={columns} 
+                dataSource={products} 
+                loading={loading} 
+                rowKey="productID" 
+            />
         </div>
     );
-}
+};
 
-export default Productlist;
+export default ProductList;

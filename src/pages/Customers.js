@@ -30,13 +30,12 @@ const Customers = () => {
         if (response.ok) {
           const customers = await response.json();
 
-          // Map the customer data to match the table's expected format
           const formattedData = customers.map((customer, index) => ({
             key: index,
             name: `${customer.firstName} ${customer.lastName || ''}`,
-            age: customer.age || 'N/A', // Assuming there's an age field or default to 'N/A'
+            age: customer.age || 'N/A', 
             address: `${customer.addressLine1 || ''} ${customer.city || ''} ${customer.state || ''}`,
-            email: customer.email || 'N/A', // Add email field
+            email: customer.email || 'N/A', 
           }));
 
           setData(formattedData);

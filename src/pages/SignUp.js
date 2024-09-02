@@ -5,7 +5,7 @@ const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const navigate = useNavigate(); 
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -14,7 +14,6 @@ const SignUp = () => {
       firstName: username,
       email: email,
       password: password,
-      // You can add other fields here if needed
     };
 
     try {
@@ -27,11 +26,9 @@ const SignUp = () => {
       });
 
       if (response.ok) {
-        // If signup is successful, navigate to the home page or another route
         navigate('/');
       } else {
         console.error('Failed to sign up');
-        // Optionally, handle different status codes and display appropriate messages
       }
     } catch (error) {
       console.error('Error:', error);

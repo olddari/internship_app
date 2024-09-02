@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Resetpassword from './pages/Resetpassword';
@@ -10,13 +10,14 @@ import Customers from './pages/Customers';
 import Categorylist from './pages/Categorylist';
 import Brandlist from './pages/Brandlist';
 import Productlist from './pages/Productlist';
-import Addblog from './pages/Addblog';
 import Addcat from './pages/Addcat';
 import Addbrand from './pages/Addbrand';
 import Addproduct from './pages/Addproduct';
 import EditCat from './pages/EditCat';
 import SignUp from './pages/SignUp';
-
+import Roles from './pages/Roles';
+import EditProduct from './pages/EditProduct'; 
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
           <Route path='product-list' element={<Productlist />} />
           <Route path='product' element={<Addproduct />} />
           <Route path='editCat/:categoryID' element={<EditCat />} />
+          <Route path='roles' element={<Roles />} /> 
+          <Route path='edit-product/:id' element={<EditProduct />} />
         </Route>
       </Routes>
     </Router>
